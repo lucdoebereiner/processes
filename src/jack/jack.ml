@@ -1,5 +1,3 @@
-open Seq
-
 external open_stream :
      (float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array1.t
   -> (float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array1.t

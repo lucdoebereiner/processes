@@ -1,4 +1,6 @@
 (library
  (name            process)
+ (public_name processes.process)
+(modules            process)
  (libraries bigarray)
  (ocamlopt_flags -O3))
