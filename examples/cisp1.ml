@@ -24,13 +24,11 @@ HfSb36g+ATfzf3I
 </code></pre>
  
 *)
-
-let map = Seq.map
-
 let midiReader =
   let boolR = MidiState.boolFromChannelR (mkChannelClip 1) in
-  let depReaderR = MidiState.getDepressedR (mkChannelClip 2) |> Reader.map (List.map (fun (Midi.Pitch p,_)->  p)) in
+  let depReaderR = MidiState.getChordIntsR (mkChannelClip 2) in
   Reader.map2 pair boolR depReaderR
+
   
 let currentChord = ref [60;64;67]
 

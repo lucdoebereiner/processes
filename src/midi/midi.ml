@@ -454,8 +454,11 @@ module MidiState = struct
 
   let getDepressedR channel =
     let open Reader.Ops in
-    Reader.ask ()
-    >>= fun env -> getDepressedKeysChannel channel env |> Reader.return
+    Reader.ask () >>= fun env -> getDepressedKeysChannel channel env |> Reader.return
+
+  let getChordIntsR channel =
+    getDepressedR channel |> Reader.map (List.map (fun (Pitch p,_) -> p))
+    
 
   let triggerOptionR value =
     let open Reader.Ops in

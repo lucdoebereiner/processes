@@ -16,14 +16,14 @@ let mapLinear (Linear f) (Sorted lst) = Sorted (List.map f lst)
 
 let emptySorted = Sorted []
 
-let insertSorted f lst a =
+let insertSorted f (Sorted lst) a =
   (* note, insertSorted (<) [1;2;3;4;5] 3 -returns- [1;2;3;3;4;5] *)
   let rec aux lst a =
     match lst with
     | [] -> [a]
     | h :: tl -> if f a h then a :: h :: tl else h :: aux tl a
   in
-  aux lst a
+  Sorted (aux lst a)
 
 let mozesSorted f sortedLst =
   let rec aux lsta (Sorted lst) =
